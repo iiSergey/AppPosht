@@ -16,6 +16,11 @@ namespace AppPosht.Models
 {
     public class Report : BindableBase
     {
+        private string _fileNameXls;
+        private ReportStatus _status;
+        private DateTime _dateReport;
+        private ObservableCollection<Piple> _piples;
+
         public Report([NotNull] string fileNameXls)
         {
             if (string.IsNullOrWhiteSpace(fileNameXls))
@@ -68,14 +73,14 @@ namespace AppPosht.Models
                             0);
 
                     }
-                        using (
-                            Stream fos =
-                                File.Open(directoryNameOut + "0500_polgaz_" + DateReport.ToString("dd.MM.yyyy") + ".dbf",
-                                    FileMode.Create,
-                                    FileAccess.Write))
-                        {
-                            dbf.Write(fos);
-                        }
+                    using (
+                        Stream fos =
+                            File.Open(directoryNameOut + "0500_polgaz_" + DateReport.ToString("dd.MM.yyyy") + ".dbf",
+                                FileMode.Create,
+                                FileAccess.Write))
+                    {
+                        dbf.Write(fos);
+                    }
                 }
                 Status = ReportStatus.Saved;
             });
@@ -111,13 +116,13 @@ namespace AppPosht.Models
                     var cellDataPlarnik2 = rowdataPlarnik2.GetCell(1);
                     var sum = cellDataPlarnik.NumericCellValue;
                     var rax = cellDataPlarnik2
-                        .StringCellValue.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries)
+                        .StringCellValue.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)
                         .FirstOrDefault();
                     var fio = cellDataPlarnik2
-                        .StringCellValue.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries)
+                        .StringCellValue.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)
                         .Skip(1).Take(3).Aggregate((res, next) => res + " " + next);
                     var adr = cellDataPlarnik2
-                        .StringCellValue.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries)
+                        .StringCellValue.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)
                         .Skip(4).TakeWhile(p => !p.Contains("До")).Aggregate((res, next) => res + " " + next);
                     //     RiListBox.Items.Add("platnik " + sum + " -- " + rax + " -- " + fio);
                     var piple = new Piple(adr, fio, rax, date, sum);
@@ -127,11 +132,30 @@ namespace AppPosht.Models
             });
         }
 
-        public string FileNameXls { get; protected set; }
-        public ReportStatus Status { get; protected set; }
+        public string FileNameXls {
+            get => _fileNameXls;
+            protected set => SetProperty(ref _fileNameXls, value);
+        }
+
+        public ReportStatus Status
+        {
+            get => _status;
+            protected set => SetProperty(ref _status , value);
+        }
+
         public double Sum => Piples?.Sum(p => p.Sum) ?? 0.0;
-        public DateTime DateReport { get; protected set; }
-        public ObservableCollection<Piple> Piples { get; protected set; }
+
+        public DateTime DateReport
+        {
+            get => _dateReport;
+            protected set => SetProperty(ref _dateReport , value);
+        }
+
+        public ObservableCollection<Piple> Piples
+        {
+            get => _piples;
+            protected set => SetProperty(ref _piples , value);
+        }
 
         public enum ReportStatus
         {

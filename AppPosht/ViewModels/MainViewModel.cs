@@ -10,17 +10,31 @@ namespace AppPosht.ViewModels
     public class MainViewModel : BindableBase
     {
         private DelegateCommand _refreshCommand;
+        private ObservableCollection<Report> _reports;
+        private bool _isEnabledReportsLoaded;
 
         public DelegateCommand RefreshComand
         {
             get => _refreshCommand ?? (_refreshCommand = new DelegateCommand(Refresh));
-            private set => _refreshCommand = value;
+            protected set => _refreshCommand = value;
         }
 
-        public ObservableCollection<Report> Reports { get; set; }=new ObservableCollection<Report>();
-        public bool IsEnabledReportsLoaded { get; set; } = true;
+        public ObservableCollection<Report> Reports
+        {
+            get => _reports;
+            protected set => SetProperty(ref _reports , value);
+        }
+
+        public bool IsEnabledReportsLoaded
+        {
+            get => _isEnabledReportsLoaded;
+            set => SetProperty(ref _isEnabledReportsLoaded , value);
+        }
+
         public MainViewModel()
         {
+            IsEnabledReportsLoaded = true;
+            Reports = new ObservableCollection<Report>();
             Refresh();
         }
 
