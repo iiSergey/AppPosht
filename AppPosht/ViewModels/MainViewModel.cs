@@ -44,10 +44,10 @@ namespace AppPosht.ViewModels
             {
                 IsEnabledReportsLoaded = false;
                 Reports.Clear();
-                if (Directory.Exists(Properties.Settings.Default.DirectoryNameOut))
+                if (Directory.Exists(Properties.Settings.Default.DirectoryNameIn))
                 {
                     Reports.AddRange(Directory
-                        .EnumerateFiles(Properties.Settings.Default.DirectoryNameOut, "*.xls")
+                        .EnumerateFiles(Properties.Settings.Default.DirectoryNameIn, "*.xls")
                         .Select(p => new Report(p))
                     );
                     foreach (var report in Reports)

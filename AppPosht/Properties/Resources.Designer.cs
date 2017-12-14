@@ -22,7 +22,7 @@ namespace AppPosht.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace AppPosht.Properties {
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AppPosht.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace AppPosht.Properties {
         ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,27 @@ namespace AppPosht.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Директорія з xls файлами.
+        /// </summary>
+        public static string ConfigDirectoryIn {
+            get {
+                return ResourceManager.GetString("ConfigDirectoryIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Директорія для збереження dbf файлів.
+        /// </summary>
+        public static string ConfigDirectoryOut {
+            get {
+                return ResourceManager.GetString("ConfigDirectoryOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Значення не може бути пустим.
         /// </summary>
-        internal static string Report_Report_Value_cannot_be_null_or_whitespace_ {
+        public static string Report_Report_Value_cannot_be_null_or_whitespace_ {
             get {
                 return ResourceManager.GetString("Report_Report_Value_cannot_be_null_or_whitespace_", resourceCulture);
             }
@@ -72,7 +90,7 @@ namespace AppPosht.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Помилка.
         /// </summary>
-        internal static string ReportStatusError {
+        public static string ReportStatusError {
             get {
                 return ResourceManager.GetString("ReportStatusError", resourceCulture);
             }
@@ -81,7 +99,7 @@ namespace AppPosht.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Оброблено.
         /// </summary>
-        internal static string ReportStatusLoaded {
+        public static string ReportStatusLoaded {
             get {
                 return ResourceManager.GetString("ReportStatusLoaded", resourceCulture);
             }
@@ -90,7 +108,7 @@ namespace AppPosht.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Обробка.
         /// </summary>
-        internal static string ReportStatusLoading {
+        public static string ReportStatusLoading {
             get {
                 return ResourceManager.GetString("ReportStatusLoading", resourceCulture);
             }
@@ -99,7 +117,7 @@ namespace AppPosht.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Звіт збережено.
         /// </summary>
-        internal static string ReportStatusSaved {
+        public static string ReportStatusSaved {
             get {
                 return ResourceManager.GetString("ReportStatusSaved", resourceCulture);
             }
@@ -108,7 +126,7 @@ namespace AppPosht.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Збереження даних.
         /// </summary>
-        internal static string ReportStatusSaving {
+        public static string ReportStatusSaving {
             get {
                 return ResourceManager.GetString("ReportStatusSaving", resourceCulture);
             }
@@ -117,7 +135,7 @@ namespace AppPosht.Properties {
         /// <summary>
         ///   Ищет локализованную строку, похожую на Очікування.
         /// </summary>
-        internal static string ReportStatusWait {
+        public static string ReportStatusWait {
             get {
                 return ResourceManager.GetString("ReportStatusWait", resourceCulture);
             }

@@ -7,7 +7,7 @@
 
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     xmlns:helper="clr-namespace:AppPosht.Helper"
-    x:Class="AppPosht.MainPage"
+    x:Class="AppPosht.Views.MainPage"
     mc:Ignorable="d"
     d:DesignHeight="440" d:DesignWidth="700"
     WindowTitle="Конвертація файлів почти з xls в dbf"

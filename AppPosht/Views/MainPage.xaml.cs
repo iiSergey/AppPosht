@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using AppPosht.ViewModels;
 
-namespace AppPosht
+namespace AppPosht.Views
 {
     /// <inheritdoc cref="Page" />
     /// <summary>
