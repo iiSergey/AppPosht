@@ -9,8 +9,8 @@
     xmlns:helper="clr-namespace:AppPosht.Helper"
     x:Class="AppPosht.MainPage"
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400"
-    Title="Конвертація файлів почти з xls в dbf"
+    d:DesignHeight="440" d:DesignWidth="700"
+    WindowTitle="Конвертація файлів почти з xls в dbf"
     x:Name="This">
     <Page.Resources>
         <helper:EnumToStringConverter x:Key="EnumToStringConverter" />
@@ -33,10 +33,10 @@
             </Grid.Row>
         </Button>
 
-        <Button IsEnabled="False" Content="Завантажити обрані файли xls" Click="ButtonDownloadAll_OnClick"
+        <Button IsEnabled="False" Content="Завантажити обрані файли xls"
                 HorizontalAlignment="Left" Margin="184,10,0,10" Width="206">
             <Grid.Row>
-                <system:Int32>0</system:Int32>
+                0
             </Grid.Row>
         </Button>
 
@@ -44,16 +44,16 @@
                  MinWidth="400">
 
             <Grid.Row>
-                <system:Int32>1</system:Int32>
+                1
             </Grid.Row>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Background="Beige">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
+                            <ColumnDefinition Width="100*"/>
                             <ColumnDefinition MinWidth="100" Width="100*" />
-                            <ColumnDefinition MinWidth="80" Width="80*" />
-                            <ColumnDefinition MinWidth="80" Width="80*" />
+                            <ColumnDefinition MinWidth="100" Width="100" />
+                            <ColumnDefinition MinWidth="100" Width="100" />
                         </Grid.ColumnDefinitions>
                         <Label Content="{Binding FileNameXls}" />
                         <Label Content="{Binding Status, Converter={StaticResource EnumToStringConverter}}">

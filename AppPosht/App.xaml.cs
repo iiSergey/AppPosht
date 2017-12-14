@@ -1,13 +1,10 @@
-﻿using System.Windows;
-
-namespace AppPosht
+﻿namespace AppPosht
 {
     /// <inheritdoc />
     /// <summary>
     /// Логика взаимодействия для App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App 
     {
-        
     }
 }

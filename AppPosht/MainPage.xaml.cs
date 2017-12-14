@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using AppPosht.ViewModels;
 
 namespace AppPosht
@@ -8,24 +7,12 @@ namespace AppPosht
     /// <summary>
     /// Логика взаимодействия для MainPage.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class MainPage
     {
         public MainPage()
         {
             InitializeComponent();
-            DataContext = new MainViewModel(); ;
+            DataContext = new MainViewModel();
         }
-
-        
-
-        private void ButtonDownloadAll_OnClick(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("ReportStatusError");
-        }
-
-        private void ButtonDownload_OnClick(object sender, RoutedEventArgs e)
-        {
-        }
-        
     }
 }

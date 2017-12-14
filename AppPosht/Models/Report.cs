@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AppPosht.Annotations;
 using AppPosht.Properties;
 using DotNetDBF;
 using NPOI.HSSF.UserModel;
@@ -39,7 +38,7 @@ namespace AppPosht.Models
             return Task.Run(() =>
             {
                 Status = ReportStatus.ReportStatusSaving;
-                string directoryNameOut = Properties.Settings.Default.DirectoryNameOut;
+                string directoryNameOut = Settings.Default.DirectoryNameOut;
                 using (var dbf = new DBFWriter
                 {
                     Fields = new[]
@@ -84,7 +83,7 @@ namespace AppPosht.Models
                     {
                         dbf.Write(fos);
                     }
-                };
+                }
                 
             Status = ReportStatus.ReportStatusSaved;
             });
@@ -148,7 +147,7 @@ namespace AppPosht.Models
             protected set => SetProperty(ref _status, value);
         }
 
-        public double Total => _piples.Sum(p => p.Sum) ;
+        public double Total => _piples.ToArray().Sum(p => p.Sum) ;
 
         public DateTime DateReport
         {
