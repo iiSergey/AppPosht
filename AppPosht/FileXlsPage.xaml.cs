@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,25 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DotNetDBF;
-using ExcelDataReader;
-using ExcelToLinq;
-using MahApps.Metro.Controls;
-using NPOI.HSSF.UserModel;
-using NPOI.SS.UserModel;
 
 namespace AppPosht
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для FileXlsPage.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class FileXlsPage : Page
     {
-        public MainWindow()
+        public FileXlsPage()
         {
             InitializeComponent();
-            
         }
-
     }
 }
