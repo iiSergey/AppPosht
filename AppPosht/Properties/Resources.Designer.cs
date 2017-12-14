@@ -61,11 +61,65 @@ namespace AppPosht.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Value cannot be null or whitespace..
+        ///   Ищет локализованную строку, похожую на Значення не може бути пустим.
         /// </summary>
         internal static string Report_Report_Value_cannot_be_null_or_whitespace_ {
             get {
                 return ResourceManager.GetString("Report_Report_Value_cannot_be_null_or_whitespace_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Помилка.
+        /// </summary>
+        internal static string ReportStatusError {
+            get {
+                return ResourceManager.GetString("ReportStatusError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Оброблено.
+        /// </summary>
+        internal static string ReportStatusLoaded {
+            get {
+                return ResourceManager.GetString("ReportStatusLoaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Обробка.
+        /// </summary>
+        internal static string ReportStatusLoading {
+            get {
+                return ResourceManager.GetString("ReportStatusLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Звіт збережено.
+        /// </summary>
+        internal static string ReportStatusSaved {
+            get {
+                return ResourceManager.GetString("ReportStatusSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Збереження даних.
+        /// </summary>
+        internal static string ReportStatusSaving {
+            get {
+                return ResourceManager.GetString("ReportStatusSaving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Очікування.
+        /// </summary>
+        internal static string ReportStatusWait {
+            get {
+                return ResourceManager.GetString("ReportStatusWait", resourceCulture);
             }
         }
     }

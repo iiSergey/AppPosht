@@ -134,6 +134,8 @@
     <Compile Include="FileXlsPage.xaml.cs">
       <DependentUpon>FileXlsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helper\EnumToStringConverter.cs" />
+    <Compile Include="Models\ReportStatus.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>

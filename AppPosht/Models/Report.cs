@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -10,6 +9,7 @@ using AppPosht.Properties;
 using DotNetDBF;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
+using Prism.Commands;
 using Prism.Mvvm;
 
 namespace AppPosht.Models
@@ -20,22 +20,25 @@ namespace AppPosht.Models
         private ReportStatus _status;
         private DateTime _dateReport;
         private ObservableCollection<Piple> _piples;
-
+        public DelegateCommand SaveCommand { get;protected set; }
+        public DelegateCommand LoadCommand { get; protected set; }
         public Report([NotNull] string fileNameXls)
         {
             if (string.IsNullOrWhiteSpace(fileNameXls))
                 throw new ArgumentException(Resources.Report_Report_Value_cannot_be_null_or_whitespace_,
                     nameof(fileNameXls));
             FileNameXls = fileNameXls;
-            Status = ReportStatus.Wait;
+            Status = ReportStatus.ReportStatusWait;
             Piples = new ObservableCollection<Piple>();
+            SaveCommand = new DelegateCommand(() => SaveAsync());
+            LoadCommand = new DelegateCommand(() => LoadAsync());
         }
 
         public Task SaveAsync()
         {
             return Task.Run(() =>
             {
-                Status = ReportStatus.Saving;
+                Status = ReportStatus.ReportStatusSaving;
                 string directoryNameOut = Properties.Settings.Default.DirectoryNameOut;
                 using (var dbf = new DBFWriter
                 {
@@ -54,7 +57,7 @@ namespace AppPosht.Models
                         new DBFField("date_eval1", NativeDbType.Date),
                         new DBFField("rgc_format", NativeDbType.Numeric, 1)
                     },
-                    CharEncoding = Encoding.GetEncoding("koi8-u")
+                    CharEncoding = Encoding.GetEncoding("cp866") //koi8-u
                 })
                 {
                     foreach (var piple in Piples)
@@ -81,8 +84,9 @@ namespace AppPosht.Models
                     {
                         dbf.Write(fos);
                     }
-                }
-                Status = ReportStatus.Saved;
+                };
+                
+            Status = ReportStatus.ReportStatusSaved;
             });
         }
 
@@ -90,10 +94,10 @@ namespace AppPosht.Models
         {
             return Task.Run(() =>
             {
-                Status = ReportStatus.Loading;
+                Status = ReportStatus.ReportStatusLoading;
                 HSSFWorkbook hssfwb;
                 if (!File.Exists(FileNameXls))
-                    Status = ReportStatus.Error;
+                    Status = ReportStatus.ReportStatusError;
                 using (var file = new FileStream(FileNameXls, FileMode.Open, FileAccess.Read))
                 {
                     hssfwb = new HSSFWorkbook(file);
@@ -116,23 +120,24 @@ namespace AppPosht.Models
                     var cellDataPlarnik2 = rowdataPlarnik2.GetCell(1);
                     var sum = cellDataPlarnik.NumericCellValue;
                     var rax = cellDataPlarnik2
-                        .StringCellValue.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+                        .StringCellValue.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries)
                         .FirstOrDefault();
                     var fio = cellDataPlarnik2
-                        .StringCellValue.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+                        .StringCellValue.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries)
                         .Skip(1).Take(3).Aggregate((res, next) => res + " " + next);
                     var adr = cellDataPlarnik2
-                        .StringCellValue.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries)
+                        .StringCellValue.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries)
                         .Skip(4).TakeWhile(p => !p.Contains("До")).Aggregate((res, next) => res + " " + next);
-                    //     RiListBox.Items.Add("platnik " + sum + " -- " + rax + " -- " + fio);
                     var piple = new Piple(adr, fio, rax, date, sum);
+
                     Piples.Add(piple);
                 }
-                Status = ReportStatus.Loaded;
+                Status = ReportStatus.ReportStatusLoaded;
             });
         }
 
-        public string FileNameXls {
+        public string FileNameXls
+        {
             get => _fileNameXls;
             protected set => SetProperty(ref _fileNameXls, value);
         }
@@ -140,31 +145,25 @@ namespace AppPosht.Models
         public ReportStatus Status
         {
             get => _status;
-            protected set => SetProperty(ref _status , value);
+            protected set => SetProperty(ref _status, value);
         }
 
-        public double Sum => Piples?.Sum(p => p.Sum) ?? 0.0;
+        public double Total => _piples.Sum(p => p.Sum) ;
 
         public DateTime DateReport
         {
             get => _dateReport;
-            protected set => SetProperty(ref _dateReport , value);
+            protected set => SetProperty(ref _dateReport, value);
         }
 
         public ObservableCollection<Piple> Piples
         {
             get => _piples;
-            protected set => SetProperty(ref _piples , value);
-        }
-
-        public enum ReportStatus
-        {
-            Wait,
-            Loading,
-            Loaded,
-            Saving,
-            Saved,
-            Error
+            protected set
+            {
+                SetProperty(ref _piples, value);
+                _piples.CollectionChanged += (s, e) => RaisePropertyChanged(nameof(Total));
+            }
         }
     }
 }
