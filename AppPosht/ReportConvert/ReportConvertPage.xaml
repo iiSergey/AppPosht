@@ -3,11 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:AppPosht.ViewModels"
 
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     xmlns:helper="clr-namespace:AppPosht.Helper"
-    x:Class="AppPosht.Views.MainPage"
+    xmlns:main="clr-namespace:AppPosht.WindowApp.Main"
+    xmlns:reportConvert="clr-namespace:AppPosht.ReportConvert"
+    x:Class="AppPosht.ReportConvert.ReportConvertPage"
     mc:Ignorable="d"
     d:DesignHeight="440" d:DesignWidth="700"
     WindowTitle="Конвертація файлів почти з xls в dbf"
@@ -18,7 +19,7 @@
 
 
     <Page.DataContext>
-        <local:MainViewModel />
+        <reportConvert:ReportConvertViewModel />
     </Page.DataContext>
 
     <Grid>

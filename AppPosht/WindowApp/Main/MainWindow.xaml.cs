@@ -1,8 +1,8 @@
 ﻿using System.Windows;
-using AppPosht.Config;
+using AppPosht.WindowApp.Config;
 using MahApps.Metro.Controls;
 
-namespace AppPosht
+namespace AppPosht.WindowApp.Main
 {
     /// <inheritdoc cref="MetroWindow" />
     /// <summary>

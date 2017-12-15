@@ -1,4 +1,6 @@
-﻿namespace AppPosht
+﻿using System.Windows;
+
+namespace AppPosht.App
 {
     /// <inheritdoc />
     /// <summary>

@@ -1,8 +1,8 @@
-﻿<Application x:Class="AppPosht.App"
+﻿<Application x:Class="AppPosht.App.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:properties="clr-namespace:AppPosht.Properties"
-             StartupUri="MainWindow.xaml">
+             StartupUri="/WindowApp/Main/MainWindow.xaml">
 
     <Application.Resources>
         <ResourceDictionary>

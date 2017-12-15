@@ -1,11 +1,13 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 
-namespace AppPosht.Config
+namespace AppPosht.WindowApp.Config
 {
     public class ConfigViewModel: BindableBase
     {
         private string _directoryIn;
         private string _directoryOut;
+        private DelegateCommand _saveCommand;
 
         public ConfigViewModel()
         {
@@ -20,6 +22,11 @@ namespace AppPosht.Config
             Properties.Settings.Default.Save();
         }
 
+        public DelegateCommand SaveComand
+        {
+            get => _saveCommand ?? (_saveCommand = new DelegateCommand(Save));
+            protected set => _saveCommand = value;
+        }
         public string DirectoryIn
         {
             get => _directoryIn;

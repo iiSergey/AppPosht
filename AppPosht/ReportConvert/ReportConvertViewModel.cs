@@ -5,9 +5,9 @@ using AppPosht.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 
-namespace AppPosht.ViewModels
+namespace AppPosht.ReportConvert
 {
-    public class MainViewModel : BindableBase
+    public class ReportConvertViewModel : BindableBase
     {
         private DelegateCommand _refreshCommand;
         private ObservableCollection<Report> _reports;
@@ -31,7 +31,7 @@ namespace AppPosht.ViewModels
             set => SetProperty(ref _isEnabledReportsLoaded , value);
         }
 
-        public MainViewModel()
+        public ReportConvertViewModel()
         {
             IsEnabledReportsLoaded = true;
             Reports = new ObservableCollection<Report>();
