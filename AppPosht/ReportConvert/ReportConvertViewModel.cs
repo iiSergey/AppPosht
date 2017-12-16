@@ -11,7 +11,9 @@ namespace AppPosht.ReportConvert
     {
         private DelegateCommand _refreshCommand;
         private ObservableCollection<Report> _reports;
-        private bool _isEnabledReportsLoaded;
+        private bool _isEnabledReportsConvert;
+
+        public ReportConvertPageLocalizationViewModel Localization { get; }
 
         public DelegateCommand RefreshComand
         {
@@ -25,24 +27,35 @@ namespace AppPosht.ReportConvert
             protected set => SetProperty(ref _reports , value);
         }
 
-        public bool IsEnabledReportsLoaded
+        public bool IsEnabledReportsConvert
         {
-            get => _isEnabledReportsLoaded;
-            set => SetProperty(ref _isEnabledReportsLoaded , value);
+            get => _isEnabledReportsConvert;
+            set => SetProperty(ref _isEnabledReportsConvert , value);
         }
 
         public ReportConvertViewModel()
         {
-            IsEnabledReportsLoaded = true;
+            IsEnabledReportsConvert = true;
             Reports = new ObservableCollection<Report>();
+            Localization=new ReportConvertPageLocalizationViewModel();
             Refresh();
+
+            App.App.LanguageChanged += (sender, args) => ChangeLanguage();
+        }
+
+        public void ChangeLanguage()
+        {
+            foreach (var report in Reports)
+            {
+                 report.StatusRefresh();
+            }
         }
 
         public async void Refresh()
         {
             try
             {
-                IsEnabledReportsLoaded = false;
+                IsEnabledReportsConvert = false;
                 Reports.Clear();
                 if (Directory.Exists(Properties.Settings.Default.DirectoryNameIn))
                 {
@@ -58,7 +71,7 @@ namespace AppPosht.ReportConvert
             }
             finally
             {
-                IsEnabledReportsLoaded = true;
+                IsEnabledReportsConvert = true;
             }
         }
     }

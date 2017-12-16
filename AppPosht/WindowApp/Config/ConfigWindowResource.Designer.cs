@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AppPosht.Properties {
+namespace AppPosht.WindowApp.Config {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace AppPosht.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class ConfigWindowResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal ConfigWindowResource() {
         }
         
         /// <summary>
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AppPosht.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AppPosht.WindowApp.Config.ConfigWindowResource", typeof(ConfigWindowResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace AppPosht.Properties {
         ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,83 +61,47 @@ namespace AppPosht.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Директорія з xls файлами.
+        ///   Ищет локализованную строку, похожую на Cansel.
         /// </summary>
-        public static string ConfigDirectoryIn {
+        internal static string Cansel {
             get {
-                return ResourceManager.GetString("ConfigDirectoryIn", resourceCulture);
+                return ResourceManager.GetString("Cansel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Директорія для збереження dbf файлів.
+        ///   Ищет локализованную строку, похожую на Configuration.
         /// </summary>
-        public static string ConfigDirectoryOut {
+        internal static string ConfigWindow {
             get {
-                return ResourceManager.GetString("ConfigDirectoryOut", resourceCulture);
+                return ResourceManager.GetString("ConfigWindow", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Значення не може бути пустим.
+        ///   Ищет локализованную строку, похожую на Directory for files *.xls.
         /// </summary>
-        public static string Report_Report_Value_cannot_be_null_or_whitespace_ {
+        internal static string DirectoryIn {
             get {
-                return ResourceManager.GetString("Report_Report_Value_cannot_be_null_or_whitespace_", resourceCulture);
+                return ResourceManager.GetString("DirectoryIn", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Помилка.
+        ///   Ищет локализованную строку, похожую на Directory for files *.dbf.
         /// </summary>
-        public static string ReportStatusError {
+        internal static string DirectoryOut {
             get {
-                return ResourceManager.GetString("ReportStatusError", resourceCulture);
+                return ResourceManager.GetString("DirectoryOut", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Оброблено.
+        ///   Ищет локализованную строку, похожую на Ok.
         /// </summary>
-        public static string ReportStatusLoaded {
+        internal static string Ok {
             get {
-                return ResourceManager.GetString("ReportStatusLoaded", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Обробка.
-        /// </summary>
-        public static string ReportStatusLoading {
-            get {
-                return ResourceManager.GetString("ReportStatusLoading", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Звіт збережено.
-        /// </summary>
-        public static string ReportStatusSaved {
-            get {
-                return ResourceManager.GetString("ReportStatusSaved", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Збереження даних.
-        /// </summary>
-        public static string ReportStatusSaving {
-            get {
-                return ResourceManager.GetString("ReportStatusSaving", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Очікування.
-        /// </summary>
-        public static string ReportStatusWait {
-            get {
-                return ResourceManager.GetString("ReportStatusWait", resourceCulture);
+                return ResourceManager.GetString("Ok", resourceCulture);
             }
         }
     }

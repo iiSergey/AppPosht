@@ -6,7 +6,7 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:config="clr-namespace:AppPosht.WindowApp.Config"
         mc:Ignorable="d"
-        Title="ConfigWindow" Height="300" Width="300">
+        Title="{Binding Localization.ConfigWindow}" Height="331.333" Width="337.333">
 
     <Window.DataContext>
         <config:ConfigViewModel />
@@ -23,21 +23,21 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
             <Grid.ColumnSpan>2</Grid.ColumnSpan>
             <Grid.Row>0</Grid.Row>
-        <Label Content="33" HorizontalContentAlignment="Center" />
-        <TextBox HorizontalContentAlignment="Center" Text="{Binding DirectoryIn}" />
-        <Label Content="out" HorizontalContentAlignment="Center" />
-        <TextBox HorizontalContentAlignment="Center" Text="{Binding DirectoryOut}" />
-    </StackPanel>
-        <Button Margin="5" Content="Ok" IsDefault="True" Command="{Binding SaveComand}" Click="OKButton_Click">
+            <Label Content="{Binding Localization.DirectoryIn}" HorizontalContentAlignment="Center" />
+            <TextBox HorizontalContentAlignment="Center" Text="{Binding DirectoryIn}" />
+            <Label Content="{Binding Localization.DirectoryOut}" HorizontalContentAlignment="Center" />
+            <TextBox HorizontalContentAlignment="Center" Text="{Binding DirectoryOut}" />
+        </StackPanel>
+        <Button Margin="5" Content="{Binding Localization.Ok}" IsDefault="True" Command="{Binding SaveComand}" Click="OKButton_Click">
             <Grid.Row>1</Grid.Row>
             <Grid.Column>0</Grid.Column>
         </Button>
-        <Button Margin="5" Content="Cansel" IsCancel="True" >
+        <Button Margin="5" Content="{Binding Localization.Cansel}" IsCancel="True" >
             <Grid.Row>1</Grid.Row>
             <Grid.Column>1</Grid.Column>
         </Button>
     </Grid>
-    
+
 </controls:MetroWindow>
 
 

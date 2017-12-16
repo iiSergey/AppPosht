@@ -261,7 +261,7 @@ namespace AppPosht.Properties
   /// <example><code>
   /// [LocalizationRequiredAttribute(true)]
   /// class Foo {
-  ///   string str = "my string"; // Warning: Localizable string
+  ///   string str = "my string"; // Warning: Localization string
   /// }
   /// </code></example>
   [AttributeUsage(AttributeTargets.All)]

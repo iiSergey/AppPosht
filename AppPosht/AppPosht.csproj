@@ -78,6 +78,9 @@
     <Reference Include="ExcelToLinq, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelToLinq.1.0.0.2\lib\net45\ExcelToLinq.dll</HintPath>
     </Reference>
+    <Reference Include="FamFamFam.Flags.Wpf, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FamFamFam.Flags.Wpf.1.1.1\lib\net35\FamFamFam.Flags.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -144,14 +147,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\EnumToStringConverter\ReportStatusResource.Designer.cs">
+      <DependentUpon>ReportStatusResource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Helper\LanguageData.cs" />
+    <Compile Include="ReportConvert\ReportConvertPageLocalizationViewModel.cs" />
+    <Compile Include="ReportConvert\ReportConvertPageResource.Designer.cs">
+      <DependentUpon>ReportConvertPageResource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="WindowApp\Config\ConfigViewModel.cs" />
     <Compile Include="WindowApp\Config\ConfigWindow.xaml.cs">
       <DependentUpon>ConfigWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="WindowApp\Main\MainWindowsLocalization.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Compile Include="Helper\LocalizationViewModel.cs" />
+    <Compile Include="WindowApp\Config\ConfigWindowResource.Designer.cs">
+      <DependentUpon>ConfigWindowResource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="WindowApp\Config\ConfigWindowLocalizationViewModel.cs" />
+    <Compile Include="WindowApp\Main\MainWindowLocalizationViewModel.cs" />
+    <Compile Include="WindowApp\Main\MainWindowResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainWindowResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="WindowApp\Main\MainWindowViewModel.cs" />
     <Page Include="ReportConvert\ReportConvertPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,7 +189,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helper\EnumToStringConverter.cs" />
+    <Compile Include="Helper\EnumToStringConverter\ReportStatusConverter.cs" />
     <Compile Include="Models\ReportStatus.cs" />
     <Compile Include="ReportConvert\ReportConvertViewModel.cs" />
     <Compile Include="ReportConvert\ReportConvertPage.xaml.cs">
@@ -194,19 +219,44 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="Helper\EnumToStringConverter\ReportStatusResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReportStatusResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper\EnumToStringConverter\ReportStatusResource.ru-RU.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper\EnumToStringConverter\ReportStatusResource.uk-UA.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportConvert\ReportConvertPageResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReportConvertPageResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportConvert\ReportConvertPageResource.ru-RU.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportConvert\ReportConvertPageResource.uk-UA.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowApp\Config\ConfigWindowResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfigWindowResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowApp\Config\ConfigWindowResource.ru-RU.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowApp\Config\ConfigWindowResource.uk-UA.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowApp\Main\MainWindowResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainWindowResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="AppPosht_TemporaryKey.pfx" />
     <None Include="packages.config" />
@@ -214,6 +264,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <EmbeddedResource Include="WindowApp\Main\MainWindowResource.uk-UA.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowApp\Main\MainWindowResource.ru-RU.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Resource Include="Resources\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -19,17 +20,16 @@ namespace AppPosht.Models
         private ReportStatus _status;
         private DateTime _dateReport;
         private ObservableCollection<Piple> _piples;
-        public DelegateCommand SaveCommand { get;protected set; }
+        public DelegateCommand ConvertCommand { get;protected set; }
         public DelegateCommand LoadCommand { get; protected set; }
         public Report([NotNull] string fileNameXls)
         {
             if (string.IsNullOrWhiteSpace(fileNameXls))
-                throw new ArgumentException(Resources.Report_Report_Value_cannot_be_null_or_whitespace_,
-                    nameof(fileNameXls));
+                throw new ArgumentException(nameof(fileNameXls));
             FileNameXls = fileNameXls;
             Status = ReportStatus.ReportStatusWait;
             Piples = new ObservableCollection<Piple>();
-            SaveCommand = new DelegateCommand(() => SaveAsync());
+            ConvertCommand = new DelegateCommand(() => SaveAsync());
             LoadCommand = new DelegateCommand(() => LoadAsync());
         }
 
@@ -105,6 +105,7 @@ namespace AppPosht.Models
 
                 var date = sheet.GetRow(8).GetCell(4).DateCellValue;
                 DateReport = date;
+                var piplestemp = new List<Piple>();
                 for (int row = 0; row <= sheet.LastRowNum; row++)
                 {
                     if (sheet.GetRow(row) == null) continue;
@@ -129,8 +130,9 @@ namespace AppPosht.Models
                         .Skip(4).TakeWhile(p => !p.Contains("До")).Aggregate((res, next) => res + " " + next);
                     var piple = new Piple(adr, fio, rax, date, sum);
 
-                    Piples.Add(piple);
+                    piplestemp.Add(piple);
                 }
+                Piples=new ObservableCollection<Piple>(piplestemp);
                 Status = ReportStatus.ReportStatusLoaded;
             });
         }
@@ -147,7 +149,11 @@ namespace AppPosht.Models
             protected set => SetProperty(ref _status, value);
         }
 
-        public double Total => _piples.ToArray().Sum(p => p.Sum) ;
+        public void StatusRefresh()
+        {
+            RaisePropertyChanged(nameof(Status));
+        }
+        public double Total => _piples.Sum(p => p.Sum) ;
 
         public DateTime DateReport
         {

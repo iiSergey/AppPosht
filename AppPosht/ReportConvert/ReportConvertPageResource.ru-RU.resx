@@ -117,31 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ConfigDirectoryIn" xml:space="preserve">
-    <value>Директорія з xls файлами</value>
+  <data name="Convert" xml:space="preserve">
+    <value>Преобразовать</value>
   </data>
-  <data name="ConfigDirectoryOut" xml:space="preserve">
-    <value>Директорія для збереження dbf файлів</value>
+  <data name="RefreshListFiles" xml:space="preserve">
+    <value>Обновить список файлов</value>
   </data>
-  <data name="ReportStatusError" xml:space="preserve">
-    <value>Помилка</value>
-  </data>
-  <data name="ReportStatusLoaded" xml:space="preserve">
-    <value>Оброблено</value>
-  </data>
-  <data name="ReportStatusLoading" xml:space="preserve">
-    <value>Обробка</value>
-  </data>
-  <data name="ReportStatusSaved" xml:space="preserve">
-    <value>Звіт збережено</value>
-  </data>
-  <data name="ReportStatusSaving" xml:space="preserve">
-    <value>Збереження даних</value>
-  </data>
-  <data name="ReportStatusWait" xml:space="preserve">
-    <value>Очікування</value>
-  </data>
-  <data name="Report_Report_Value_cannot_be_null_or_whitespace_" xml:space="preserve">
-    <value>Значення не може бути пустим</value>
+  <data name="WindowTitle" xml:space="preserve">
+    <value>Преобразовать файлы xls в файлы dbf</value>
   </data>
 </root>

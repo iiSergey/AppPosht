@@ -19,7 +19,6 @@
                 <ResourceDictionary Source="/Resources/Icons.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <properties:Settings x:Key="Settings" />
-            <properties:Resources x:Key="ResourcesLocalise" />
         </ResourceDictionary>
     </Application.Resources>
 

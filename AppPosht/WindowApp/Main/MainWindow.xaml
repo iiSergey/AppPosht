@@ -4,11 +4,17 @@
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:main="clr-namespace:AppPosht.WindowApp.Main"
+                      xmlns:flags="clr-namespace:FamFamFam.Flags.Wpf;assembly=FamFamFam.Flags.Wpf"
+                      xmlns:helper="clr-namespace:AppPosht.Helper"
                       mc:Ignorable="d"
                        Height="400" Width="700">
+    <controls:MetroWindow.Resources>
+        <flags:CountryIdToFlagImageSourceConverter  x:Key="CountryIdToFlagImageSourceConverter" />
+    </controls:MetroWindow.Resources>
     <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
-            <Button Content="settings" Click="ButtonConfig_OnClick" />
+            <Button Content="{Binding Localization.SettingsText, Mode=OneWay}" Click="ButtonConfig_OnClick" />
             <Button>
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20"
@@ -23,8 +29,25 @@
                                Text="deploy cupcakes" />
                 </StackPanel>
             </Button>
+            <ComboBox ItemsSource="{Binding Languages}" Margin="3"
+                      SelectedItem="{Binding LanguageSelect}"
+                      SelectionChanged="Selector_OnSelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="helper:LanguageData"  >
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding Path=Iso2, Converter={StaticResource CountryIdToFlagImageSourceConverter}}"
+                                   Stretch="None" Width="23" Height="18" RenderOptions.BitmapScalingMode="HighQuality" />
+                            <TextBlock Text="{Binding Path=Name}" Margin="5,0,0,0" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox >
         </controls:WindowCommands>
     </controls:MetroWindow.RightWindowCommands>
+
+    <Window.DataContext>
+        <main:MainWindowViewModel />
+    </Window.DataContext>
     <DockPanel>
         <Frame x:Name="MainFrame" Source="/ReportConvert/ReportConvertPage.xaml"  NavigationUIVisibility="Hidden" />
     </DockPanel>

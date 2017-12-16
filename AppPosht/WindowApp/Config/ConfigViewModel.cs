@@ -9,8 +9,11 @@ namespace AppPosht.WindowApp.Config
         private string _directoryOut;
         private DelegateCommand _saveCommand;
 
+        public ConfigWindowLocalizationViewModel Localization { get; }
+
         public ConfigViewModel()
         {
+            Localization = new ConfigWindowLocalizationViewModel();
             DirectoryIn = Properties.Settings.Default.DirectoryNameIn;
             DirectoryOut = Properties.Settings.Default.DirectoryNameOut;
         }

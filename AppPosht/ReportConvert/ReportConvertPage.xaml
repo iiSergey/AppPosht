@@ -5,16 +5,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 
     xmlns:system="clr-namespace:System;assembly=mscorlib"
-    xmlns:helper="clr-namespace:AppPosht.Helper"
-    xmlns:main="clr-namespace:AppPosht.WindowApp.Main"
     xmlns:reportConvert="clr-namespace:AppPosht.ReportConvert"
+    xmlns:enumToStringConverter="clr-namespace:AppPosht.Helper.EnumToStringConverter"
     x:Class="AppPosht.ReportConvert.ReportConvertPage"
     mc:Ignorable="d"
     d:DesignHeight="440" d:DesignWidth="700"
-    WindowTitle="Конвертація файлів почти з xls в dbf"
     x:Name="This">
     <Page.Resources>
-        <helper:EnumToStringConverter x:Key="EnumToStringConverter" />
+        <enumToStringConverter:ReportStatusConverter x:Key="EnumToStringConverter" />
     </Page.Resources>
 
 
@@ -27,17 +25,10 @@
             <RowDefinition Height="60" MinHeight="60" />
             <RowDefinition Height="259*" />
         </Grid.RowDefinitions>
-        <Button Content="Оновити список файлів" Command="{Binding RefreshComand}" HorizontalAlignment="Left"
-                Margin="10,10,0,10" Width="169" IsEnabled="{Binding IsEnabledReportsLoaded}">
+        <Button Content="{Binding Localization.RefreshListFiles}" Command="{Binding RefreshComand}" HorizontalAlignment="Left"
+                Margin="10,10,0,10" Width="169" IsEnabled="{Binding IsEnabledReportsConvert}">
             <Grid.Row>
                 <system:Int32>0</system:Int32>
-            </Grid.Row>
-        </Button>
-
-        <Button IsEnabled="False" Content="Завантажити обрані файли xls"
-                HorizontalAlignment="Left" Margin="184,10,0,10" Width="206">
-            <Grid.Row>
-                0
             </Grid.Row>
         </Button>
 
@@ -67,7 +58,7 @@
                                 2
                             </Grid.Column>
                         </Label>
-                        <Button Content="Зберегти" Command="{Binding SaveCommand}">
+                        <Button Content="{Binding DataContext.Localization.Convert, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type reportConvert:ReportConvertPage}}}" Command="{Binding ConvertCommand}">
                             <Grid.Column>
                                 3
                             </Grid.Column>
